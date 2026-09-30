@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Full Stack MongoDB Programs</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e293b;
+        }
+
+        h2 {
+            color: #334155;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #cbd5e1;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        hr {
+            margin: 40px 0;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>Full Stack Development - MongoDB</h1>
+
+
+    <!-- ================================================= -->
+    <!-- CAMPUS CLUB MEMBERS -->
+    <!-- ================================================= -->
+
+    <h1>Campus Club Members</h1>
+
+
+    <div class="card">
+
+        <h2>1. Add 4 Club Members</h2>
+
+        <button onclick="addMembers()">
+            Add Members
+        </button>
+
+        <pre id="memberSeedResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>2. Find Club Members by Club and Points</h2>
+
+        <input
+            id="clubFilter"
+            placeholder="Club Name"
+        >
+
+        <input
+            id="clubPointFilter"
+            type="number"
+            placeholder="Points greater than"
+        >
+
+        <button onclick="filterMembers()">
+            Search
+        </button>
+
+        <pre id="memberFilterResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>3. Search Member by ID</h2>
+
+        <input
+            id="memberSearchId"
+            placeholder="M001"
+        >
+
+        <button onclick="searchMember()">
+            Search
+        </button>
+
+        <pre id="memberSearchResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>4. Update Role and Points</h2>
+
+        <input
+            id="memberUpdateId"
+            placeholder="Member ID"
+        >
+
+        <input
+            id="memberRole"
+            placeholder="New Role"
+        >
+
+        <input
+            id="memberPoints"
+            type="number"
+            placeholder="New Points"
+        >
+
+        <button onclick="updateMember()">
+            Update
+        </button>
+
+        <pre id="memberUpdateResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>5. Increase Club Points</h2>
+
+        <input
+            id="increaseClubName"
+            placeholder="Club Name"
+        >
+
+        <input
+            id="increaseClubPoints"
+            type="number"
+            placeholder="Amount"
+        >
+
+        <button onclick="increaseClubPoints()">
+            Increase
+        </button>
+
+        <pre id="increaseClubResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>6. Points Range</h2>
+
+        <input
+            id="minimumPoints"
+            type="number"
+            placeholder="Minimum"
+        >
+
+        <input
+            id="maximumPoints"
+            type="number"
+            placeholder="Maximum"
+        >
+
+        <button onclick="pointsRange()">
+            Search
+        </button>
+
+        <pre id="pointsRangeResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>7. Delete Member</h2>
+
+        <input
+            id="memberDeleteId"
+            placeholder="Member ID"
+        >
+
+        <button onclick="deleteMember()">
+            Delete
+        </button>
+
+        <pre id="memberDeleteResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>8. All Members - Points Descending</h2>
+
+        <button onclick="allMembers()">
+            Display Members
+        </button>
+
+        <pre id="allMembersResult"></pre>
+
+    </div>
+
+
+    <hr>
+
+
+    <!-- ================================================= -->
+    <!-- TRAVEL BUDDY FINDER -->
+    <!-- ================================================= -->
+
+
+    <h1>Travel Buddy Finder</h1>
+
+
+    <div class="card">
+
+        <h2>1. Add 4 Travel Buddies</h2>
+
+        <button onclick="addBuddies()">
+            Add Travel Buddies
+        </button>
+
+        <pre id="buddySeedResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>2. Find by Destination and Budget</h2>
+
+        <input
+            id="buddyDestinationFilter"
+            placeholder="Destination"
+        >
+
+        <input
+            id="buddyBudgetFilter"
+            type="number"
+            placeholder="Budget greater than"
+        >
+
+        <button onclick="filterBuddies()">
+            Search
+        </button>
+
+        <pre id="buddyFilterResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>3. Search Buddy by ID</h2>
+
+        <input
+            id="buddySearchId"
+            placeholder="B001"
+        >
+
+        <button onclick="searchBuddy()">
+            Search
+        </button>
+
+        <pre id="buddySearchResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>4. Update Destination and Budget</h2>
+
+        <input
+            id="buddyUpdateId"
+            placeholder="Buddy ID"
+        >
+
+        <input
+            id="buddyNewDestination"
+            placeholder="New Destination"
+        >
+
+        <input
+            id="buddyNewBudget"
+            type="number"
+            placeholder="New Budget"
+        >
+
+        <button onclick="updateBuddy()">
+            Update
+        </button>
+
+        <pre id="buddyUpdateResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>5. Increase Destination Budget</h2>
+
+        <input
+            id="budgetDestination"
+            placeholder="Destination"
+        >
+
+        <input
+            id="budgetIncrease"
+            type="number"
+            placeholder="Amount"
+        >
+
+        <button onclick="increaseBudget()">
+            Increase
+        </button>
+
+        <pre id="budgetIncreaseResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>6. Budget Range</h2>
+
+        <input
+            id="minimumBudget"
+            type="number"
+            placeholder="Minimum"
+        >
+
+        <input
+            id="maximumBudget"
+            type="number"
+            placeholder="Maximum"
+        >
+
+        <button onclick="budgetRange()">
+            Search
+        </button>
+
+        <pre id="budgetRangeResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>7. Delete Travel Buddy</h2>
+
+        <input
+            id="buddyDeleteId"
+            placeholder="Buddy ID"
+        >
+
+        <button onclick="deleteBuddy()">
+            Delete
+        </button>
+
+        <pre id="buddyDeleteResult"></pre>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>8. All Buddies - Budget Descending</h2>
+
+        <button onclick="allBuddies()">
+            Display Buddies
+        </button>
+
+        <pre id="allBuddiesResult"></pre>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+// ============================================================
+// CAMPUS CLUB MEMBERS
+// ============================================================
+
+
+async function addMembers() {
+
+    const response =
+        await fetch("/members/seed", {
+            method: "POST"
+        });
+
+    const data = await response.json();
+
+    document.getElementById("memberSeedResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function filterMembers() {
+
+    const club =
+        document.getElementById("clubFilter").value;
+
+    const points =
+        document.getElementById("clubPointFilter").value;
+
+    const response =
+        await fetch(
+            `/members/filter?clubName=${encodeURIComponent(club)}&points=${points}`
+        );
+
+    const data = await response.json();
+
+    document.getElementById("memberFilterResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function searchMember() {
+
+    const id =
+        document.getElementById("memberSearchId").value;
+
+    const response =
+        await fetch(`/members/search/${id}`);
+
+    const data = await response.json();
+
+    document.getElementById("memberSearchResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function updateMember() {
+
+    const id =
+        document.getElementById("memberUpdateId").value;
+
+    const role =
+        document.getElementById("memberRole").value;
+
+    const points =
+        document.getElementById("memberPoints").value;
+
+    const response =
+        await fetch(`/members/${id}`, {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                role: role,
+                points: points
+            })
+
+        });
+
+    const data = await response.json();
+
+    document.getElementById("memberUpdateResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function increaseClubPoints() {
+
+    const clubName =
+        document.getElementById("increaseClubName").value;
+
+    const amount =
+        document.getElementById("increaseClubPoints").value;
+
+    const response =
+        await fetch(
+            "/members/club/increase-points",
+            {
+
+                method: "PATCH",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    clubName: clubName,
+                    amount: amount
+                })
+
+            }
+        );
+
+    const data = await response.json();
+
+    document.getElementById("increaseClubResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function pointsRange() {
+
+    const min =
+        document.getElementById("minimumPoints").value;
+
+    const max =
+        document.getElementById("maximumPoints").value;
+
+    const response =
+        await fetch(
+            `/members/range?min=${min}&max=${max}`
+        );
+
+    const data = await response.json();
+
+    document.getElementById("pointsRangeResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function deleteMember() {
+
+    const id =
+        document.getElementById("memberDeleteId").value;
+
+    const response =
+        await fetch(`/members/${id}`, {
+            method: "DELETE"
+        });
+
+    const data = await response.json();
+
+    document.getElementById("memberDeleteResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function allMembers() {
+
+    const response =
+        await fetch("/members");
+
+    const data =
+        await response.json();
+
+    document.getElementById("allMembersResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+// ============================================================
+// TRAVEL BUDDY FINDER
+// ============================================================
+
+
+async function addBuddies() {
+
+    const response =
+        await fetch("/buddies/seed", {
+            method: "POST"
+        });
+
+    const data = await response.json();
+
+    document.getElementById("buddySeedResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function filterBuddies() {
+
+    const destination =
+        document.getElementById(
+            "buddyDestinationFilter"
+        ).value;
+
+    const budget =
+        document.getElementById(
+            "buddyBudgetFilter"
+        ).value;
+
+    const response =
+        await fetch(
+            `/buddies/filter?destination=${encodeURIComponent(destination)}&budget=${budget}`
+        );
+
+    const data = await response.json();
+
+    document.getElementById("buddyFilterResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function searchBuddy() {
+
+    const id =
+        document.getElementById("buddySearchId").value;
+
+    const response =
+        await fetch(`/buddies/search/${id}`);
+
+    const data = await response.json();
+
+    document.getElementById("buddySearchResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function updateBuddy() {
+
+    const id =
+        document.getElementById("buddyUpdateId").value;
+
+    const destination =
+        document.getElementById(
+            "buddyNewDestination"
+        ).value;
+
+    const budget =
+        document.getElementById(
+            "buddyNewBudget"
+        ).value;
+
+    const response =
+        await fetch(`/buddies/${id}`, {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                destination: destination,
+                budget: budget
+            })
+
+        });
+
+    const data = await response.json();
+
+    document.getElementById("buddyUpdateResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function increaseBudget() {
+
+    const destination =
+        document.getElementById(
+            "budgetDestination"
+        ).value;
+
+    const amount =
+        document.getElementById(
+            "budgetIncrease"
+        ).value;
+
+    const response =
+        await fetch(
+            "/buddies/destination/increase-budget",
+            {
+
+                method: "PATCH",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    destination: destination,
+                    amount: amount
+                })
+
+            }
+        );
+
+    const data = await response.json();
+
+    document.getElementById("budgetIncreaseResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function budgetRange() {
+
+    const min =
+        document.getElementById("minimumBudget").value;
+
+    const max =
+        document.getElementById("maximumBudget").value;
+
+    const response =
+        await fetch(
+            `/buddies/range?min=${min}&max=${max}`
+        );
+
+    const data = await response.json();
+
+    document.getElementById("budgetRangeResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function deleteBuddy() {
+
+    const id =
+        document.getElementById("buddyDeleteId").value;
+
+    const response =
+        await fetch(`/buddies/${id}`, {
+            method: "DELETE"
+        });
+
+    const data = await response.json();
+
+    document.getElementById("buddyDeleteResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+
+async function allBuddies() {
+
+    const response =
+        await fetch("/buddies");
+
+    const data =
+        await response.json();
+
+    document.getElementById("allBuddiesResult")
+        .textContent =
+        JSON.stringify(data, null, 2);
+
+}
+
+</script>
+
+</body>
+
+</html>
